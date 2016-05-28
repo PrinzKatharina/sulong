@@ -8,5 +8,5 @@ int main() {
   if(not != -1) {
     abort();
   }
-  return not;
+  return 0;
 }
