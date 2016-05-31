@@ -62,12 +62,104 @@ public final class LLVMInlineAssemblyTest {
         Assert.assertEquals(42, run(file));
     }
 
+    @Test
+    public void test003() {
+        String file = "inlineassembly003";
+        Assert.assertEquals(-1, run(file));
+    }
+
+    @Test
+    public void test004() {
+        String file = "inlineassembly004";
+        Assert.assertEquals(1, run(file));
+    }
+
+    @Test
+    public void test005() {
+        String file = "inlineassembly005";
+        Assert.assertEquals(13, run(file));
+    }
+
+    @Test
+    public void test006() {
+        String file = "inlineassembly006";
+        Assert.assertEquals(12, run(file));
+    }
+
+    @Test
+    public void test007() {
+        String file = "inlineassembly007";
+        Assert.assertEquals(189, run(file));
+    }
+
+    @Test
+    public void test008() {
+        String file = "inlineassembly008";
+        Assert.assertEquals(43, run(file));
+    }
+
+    @Test
+    public void test009() {
+        String file = "inlineassembly009";
+        Assert.assertEquals(55, run(file));
+    }
+
+    @Test
+    public void test010() {
+        String file = "inlineassembly010";
+        Assert.assertEquals(61, run(file));
+    }
+
+// @Test
+// public void test011() {
+// String file = "inlineassembly011";
+// Assert.assertEquals(55, run(file));
+// }
+
+    @Test
+    public void test012() {
+        String file = "inlineassembly012";
+        Assert.assertEquals(68, run(file));
+    }
+
+    @Test
+    public void test013() {
+        String file = "inlineassembly013";
+        Assert.assertEquals(255, run(file));
+    }
+
+    @Test
+    public void test014() {
+        String file = "inlineassembly014";
+        Assert.assertEquals(172, run(file));
+    }
+
+    @Test
+    public void test015() {
+        String file = "inlineassembly015";
+        Assert.assertEquals(2, run(file));
+    }
+
+    @Test
+    public void test016() {
+        String file = "inlineassembly016";
+        Assert.assertEquals(172, run(file));
+    }
+
+    @Test
+    public void test017() {
+        String file = "inlineassembly017";
+        Assert.assertEquals(-1, run(file));
+    }
+
     private static int run(String fileName) {
         Builder builder = PolyglotEngine.newBuilder();
         builder.globalSymbol(null, null);
         final PolyglotEngine engine = builder.build();
         try {
             File cFile = new File(PATH, fileName + ".c");
+// File bcFile = new File(PATH + "/", "bc_" + fileName + ".ll");
+// File bcOptFile = new File(PATH + "/", "bcopt_" + fileName + ".ll");
             File bcFile = File.createTempFile(PATH + "/" + "bc_" + fileName, ".ll");
             File bcOptFile = File.createTempFile(PATH + "/" + "bcopt_" + fileName, ".ll");
             Clang.compileToLLVMIR(cFile, bcFile, ClangOptions.builder());
